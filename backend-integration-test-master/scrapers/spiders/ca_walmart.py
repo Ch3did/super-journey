@@ -42,7 +42,7 @@ class CaWalmartSpider(scrapy.Spider):
         #Call models Product and append info in every Column
         item = ProductItem()
         item['store'] = response.xpath('/html/head/meta[10]/@content').get()
-        item['barcodes'] = int(' '.join(json_product['entities']['skus'][sku]['upc']))
+        item['barcodes'] = ' '.join(json_product['entities']['skus'][sku]['upc'])
         item['image_url'] = json_product['entities']['skus'][sku]['images'][0]['large']['url']
         item['sku'] = jason_product['sku']
         item['brand'] = json_product['entities']['skus'][sku]['brand']['name']
